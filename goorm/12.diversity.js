@@ -5,6 +5,7 @@ const rl = readline.createInterface({
 });
 
 const input = [];
+
 rl.on("line", (line) => {
     input.push(line.split(" ").map(Number));
 }).on("close", () => {
