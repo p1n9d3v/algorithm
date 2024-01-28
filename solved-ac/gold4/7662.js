@@ -19,32 +19,46 @@ rl.on("line", function (line) {
         const valid = {};
         cases.splice(0, N);
 
-        testcases.forEach((testcase) => {
-            const [P, D] = testcase.split(" ");
+        for (let i = 0; i < testcases.length; i++) {
+            const [P, D] = testcases[i].split(" ");
             if (P === "I") {
                 maxQueue.push(D);
                 minQueue.push(D);
-                if (valid[D] === undefined) valid[D] = 0;
-                else valid[D]++;
-                validCount++;
+                if (valid[D]) valid[D]++;
+                else valid[D] = 1;
             } else {
                 if (D === "1") {
-                    maxQueue.pop();
+                    while (!maxQueue.isEmpty()) {
+                        const item = maxQueue.pop();
+                        if (valid[item] > 0) {
+                            valid[item]--;
+                            break;
+                        }
+                    }
                 } else {
-                    minQueue.pop();
+                    while (!minQueue.isEmpty()) {
+                        const item = minQueue.pop();
+                        if (valid[item] > 0) {
+                            valid[item]--;
+                            break;
+                        }
+                    }
                 }
-                validCount--;
             }
-        });
+        }
+        while (!maxQueue.isEmpty() && valid[maxQueue.peek()] === 0)
+            maxQueue.pop();
+        while (!minQueue.isEmpty() && valid[minQueue.peek()] === 0)
+            minQueue.pop();
 
-        if (validCount <= 0) {
+        if (minQueue.isEmpty() && maxQueue.isEmpty()) {
             answer.push("EMPTY");
         } else {
             answer.push(`${maxQueue.peek()} ${minQueue.peek()}`);
         }
-
-        console.log(answer.join("\n"));
     }
+
+    console.log(answer.join("\n"));
 });
 
 class Heap {
@@ -93,8 +107,12 @@ class Heap {
                 targetIdx = rightIdx;
             }
 
-            this.#swap(targetIdx, curIdx);
-            curIdx = targetIdx;
+            if (this.compare(this.heap[targetIdx], this.heap[curIdx])) {
+                this.#swap(targetIdx, curIdx);
+                curIdx = targetIdx;
+            } else {
+                break;
+            }
         }
 
         return result;
