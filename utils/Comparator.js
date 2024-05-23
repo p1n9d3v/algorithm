@@ -9,7 +9,7 @@ export default class Comparator {
         return a < b ? -1 : 1;
     }
 
-    euqal(a, b) {
+    equal(a, b) {
         return this.compare(a, b) === 0;
     }
 
@@ -22,11 +22,11 @@ export default class Comparator {
     }
 
     lessThanOrEqual(a, b) {
-        return this.lessThan(a, b) || this.euqal(a, b);
+        return this.lessThan(a, b) || this.equal(a, b);
     }
 
     greaterThanOrEqual(a, b) {
-        return this.greaterThan(a, b) || this.euqal(a, b);
+        return this.greaterThan(a, b) || this.equal(a, b);
     }
 
     reverse() {
