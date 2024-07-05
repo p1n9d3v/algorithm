@@ -37,3 +37,62 @@ function solution(book_time) {
 
     return rooms.length;
 }
+
+"objects": [
+    {
+      "name": "cluster_0",
+      "_draw_": 
+      [
+        {
+          "op": "S",
+          "style": "tab"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#0000ff"
+        },
+        {
+          "op": "p",
+          "points": [[8.000,133.600],[8.000,336.000],[322.000,336.000],[322.000,133.600]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 14.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [165.000,319.400],
+          "align": "c",
+          "width": 92.120,
+          "text": "Service Package"
+        }
+      ],
+      "bb": "8,133.6,322,336",
+      "color": "blue",
+      "label": "Service Package",
+      "lheight": "0.23",
+      "lp": "165,323.6",
+      "lwidth": "1.28",
+      "style": "tab",
+      "_gvid": 0,
+      "subgraphs": [
+        1,
+2
+      ],
+      "nodes": [
+        5,6,7,8,9,10,11
+      ],
+      "edges": [
+        4
+      ]
+    }
